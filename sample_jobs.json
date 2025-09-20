@@ -1,0 +1,72 @@
+[
+    {
+        "title": "Python Developer",
+        "company": "Tech Solutions Inc.",
+        "description": "We are looking for a Python Developer with experience in Django and Flask frameworks. The ideal candidate will have strong problem-solving skills and experience with REST APIs and database design.",
+        "required_skills": ["Python", "Django", "Flask", "REST APIs", "SQL", "Problem Solving"],
+        "location": "New York, NY"
+    },
+    {
+        "title": "Frontend Developer",
+        "company": "Web Innovations LLC",
+        "description": "Join our team as a Frontend Developer specializing in React and modern JavaScript. You'll be responsible for building responsive user interfaces and collaborating with our design team.",
+        "required_skills": ["JavaScript", "React", "HTML", "CSS", "UI/UX"],
+        "location": "San Francisco, CA"
+    },
+    {
+        "title": "Data Scientist",
+        "company": "Data Insights Corp",
+        "description": "Seeking a Data Scientist with experience in machine learning and statistical analysis. You'll work with large datasets to extract insights and build predictive models.",
+        "required_skills": ["Python", "Machine Learning", "Statistics", "Pandas", "NumPy", "Data Visualization"],
+        "location": "Boston, MA"
+    },
+    {
+        "title": "DevOps Engineer",
+        "company": "Cloud Systems Ltd",
+        "description": "We need a DevOps Engineer to automate our deployment processes and manage our cloud infrastructure. Experience with Docker, Kubernetes, and AWS required.",
+        "required_skills": ["DevOps", "Docker", "Kubernetes", "AWS", "CI/CD", "Linux"],
+        "location": "Austin, TX"
+    },
+    {
+        "title": "Full Stack Developer",
+        "company": "Digital Creations Inc",
+        "description": "Looking for a Full Stack Developer proficient in both frontend and backend technologies. You'll work on all aspects of our web application from database to UI.",
+        "required_skills": ["JavaScript", "React", "Node.js", "SQL", "HTML", "CSS"],
+        "location": "Chicago, IL"
+    },
+    {
+        "title": "Machine Learning Engineer",
+        "company": "AI Innovations",
+        "description": "Join our AI team to develop and deploy machine learning models. Experience with deep learning frameworks and cloud deployment is essential.",
+        "required_skills": ["Python", "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch", "AWS"],
+        "location": "Seattle, WA"
+    },
+    {
+        "title": "Mobile App Developer",
+        "company": "AppWorks Studio",
+        "description": "We're hiring a Mobile App Developer to build cross-platform applications. Experience with React Native or Flutter is preferred.",
+        "required_skills": ["JavaScript", "React Native", "Flutter", "iOS", "Android", "Mobile Development"],
+        "location": "Los Angeles, CA"
+    },
+    {
+        "title": "Backend Engineer",
+        "company": "Server Solutions Inc",
+        "description": "Looking for a Backend Engineer to design and implement scalable server architectures. Experience with microservices and database optimization required.",
+        "required_skills": ["Python", "Java", "Microservices", "SQL", "NoSQL", "API Design"],
+        "location": "Remote"
+    },
+    {
+        "title": "UX/UI Designer",
+        "company": "Creative Designs Co",
+        "description": "Join our design team to create intuitive user experiences and beautiful interfaces. Proficiency in design tools and understanding of frontend technologies required.",
+        "required_skills": ["UI/UX", "Figma", "Adobe XD", "HTML", "CSS", "Web Design"],
+        "location": "Portland, OR"
+    },
+    {
+        "title": "Data Engineer",
+        "company": "Big Data Technologies",
+        "description": "Seeking a Data Engineer to build and maintain our data pipelines. Experience with Spark, Hadoop, and cloud data services required.",
+        "required_skills": ["Python", "SQL", "Spark", "Hadoop", "AWS", "Data Pipelines"],
+        "location": "Denver, CO"
+    }
+]

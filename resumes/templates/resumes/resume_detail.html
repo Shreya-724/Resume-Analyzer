@@ -1,0 +1,88 @@
+{% extends 'resumes/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Resume Analysis: {{ resume.original_filename }}</h2>
+    <a href="{% url 'resume_list' %}" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-1"></i> Back to List
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Resume Information</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Filename:</strong> {{ resume.original_filename }}</p>
+                <p><strong>Uploaded:</strong> {{ resume.uploaded_at|date:"M d, Y H:i" }}</p>
+                
+                <h6 class="mt-4">Extracted Text Preview:</h6>
+                <div class="border p-3 bg-light" style="max-height: 200px; overflow-y: auto;">
+                    {{ resume.extracted_text|truncatewords:100 }}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Detected Skills</h5>
+            </div>
+            <div class="card-body">
+                {% if resume.skills %}
+                <div class="d-flex flex-wrap">
+                    {% for skill in resume.skills %}
+                    <span class="badge bg-primary skill-badge mb-1">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted">No skills detected in this resume.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Job Recommendations</h5>
+    </div>
+    <div class="card-body">
+        {% if recommendations %}
+        <div class="list-group">
+            {% for job, score in recommendations %}
+            <div class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ job.title }} at {{ job.company }}</h5>
+                    <span class="badge bg-{% if score > 0.7 %}success{% elif score > 0.4 %}warning{% else %}secondary{% endif %}">
+                        Match: {{ score|floatformat:2 }}
+                    </span>
+                </div>
+                <p class="mb-1"><strong>Location:</strong> {{ job.location|default:"Not specified" }}</p>
+                <p class="mb-1"><strong>Posted:</strong> {{ job.posted_date|date:"M d, Y" }}</p>
+                
+                <div class="mt-2">
+                    <strong>Description:</strong>
+                    <p>{{ job.description|truncatewords:30 }}</p>
+                </div>
+                
+                {% if job.required_skills %}
+                <div class="mt-2">
+                    <strong>Required Skills:</strong>
+                    {% for skill in job.required_skills %}
+                    <span class="badge bg-secondary skill-badge">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-muted">No job recommendations available. Make sure you have jobs in the database.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
