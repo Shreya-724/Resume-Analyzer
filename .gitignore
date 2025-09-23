@@ -184,5 +184,5 @@ ENV/
 !*.sqlite3.empty  # If you want to include an empty database structure
 
 # Sample files (you might want to keep these)
-!sample_jobs.json
-!skills.csv
+sample_jobs.json
+skills.csv
