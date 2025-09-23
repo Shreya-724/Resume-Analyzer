@@ -179,7 +179,7 @@ class ResumeListAPI(generics.ListCreateAPIView):
             extracted_text=extracted_text,
             skills=skills
         )
-
+        
 class ResumeDetailAPI(generics.RetrieveUpdateDestroyAPIView):
     """API view to retrieve, update, or delete a resume"""
     serializer_class = ResumeSerializer
