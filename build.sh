@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# build.sh
-
 echo "=== Building AI Resume Analyzer ==="
 
 # Upgrade pip
@@ -10,9 +8,6 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # Download spaCy model
-python -m spacy download en_core_web_sm
-
-# Collect static files
-python manage.py collectstatic --noinput --clear
+python -c "import spacy; spacy.cli.download('en_core_web_sm')"
 
 echo "=== Build completed successfully ==="
