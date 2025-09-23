@@ -8,12 +8,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.views import View
 from rest_framework import generics, permissions
-from .models import Resume, Job
-from .forms import ResumeUploadForm
+from .models import Resume, Job,UserProfile
+from .forms import ResumeUploadForm,UserProfileForm, UserForm
 from .serializers import ResumeSerializer, JobSerializer
 from .parsers import parse_resume
 from .nlp import extract_skills
 from .recommender import recommend_jobs_for_resume_id
+from django.contrib import messages
+
 
 def home(request):
     """Home page view"""
@@ -102,6 +104,60 @@ def resume_detail(request, pk):
         'recommendations': recommendations
     })
 
+@login_required
+def resume_delete(request, pk):
+    """Delete a resume"""
+    resume = get_object_or_404(Resume, pk=pk, user=request.user)
+    
+    if request.method == 'POST':
+        resume_name = resume.original_filename
+        resume.delete()
+        messages.success(request, f'Resume "{resume_name}" has been deleted successfully.')
+        return redirect('resume_list')
+    
+    # If not POST, redirect to resume list
+    return redirect('resume_list')
+
+@login_required
+def profile_view(request):
+    """User profile page"""
+    user = request.user
+    try:
+        profile = user.userprofile
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=user)
+    
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=user)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile has been updated successfully!')
+            return redirect('profile')
+    else:
+        user_form = UserForm(instance=user)
+        profile_form = UserProfileForm(instance=profile)
+    
+    return render(request, 'resumes/profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'profile': profile
+    })
+
+@login_required
+def profile_picture_upload(request):
+    """Handle profile picture upload via AJAX"""
+    if request.method == 'POST' and request.FILES:
+        try:
+            profile = request.user.userprofile
+            profile.profile_picture = request.FILES['profile_picture']
+            profile.save()
+            return JsonResponse({'success': True, 'profile_picture_url': profile.get_profile_picture_url})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
 # API Views
 class ResumeListAPI(generics.ListCreateAPIView):
     """API view to list and create resumes"""

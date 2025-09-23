@@ -1,5 +1,5 @@
 import re
-from io import StringIO
+from io import StringIO,BytesIO
 from pdfminer.high_level import extract_text as extract_pdf_text
 from pdfminer.layout import LAParams
 from docx import Document
@@ -7,13 +7,24 @@ from docx import Document
 def extract_text_from_pdf(file):
     """Extract text from PDF file"""
     try:
-        # Create a string buffer to capture the text
-        output_string = StringIO()
+        # Reset file pointer to beginning
+        if hasattr(file, 'seek'):
+            file.seek(0)
+        
+        # Create a bytes buffer from the uploaded file
+        pdf_bytes = file.read()
+        
+        # Create a bytes buffer for pdfminer
+        pdf_buffer = BytesIO(pdf_bytes)
         
         # Extract text with layout parameters for better text extraction
         laparams = LAParams()
-        text = extract_pdf_text(file, laparams=laparams)
+        text = extract_pdf_text(pdf_buffer, laparams=laparams)
         
+        # Reset file pointer for potential future use
+        if hasattr(file, 'seek'):
+            file.seek(0)
+            
         return clean_text(text)
     except Exception as e:
         raise Exception(f"Error extracting text from PDF: {str(e)}")
@@ -21,8 +32,23 @@ def extract_text_from_pdf(file):
 def extract_text_from_docx(file):
     """Extract text from DOCX file"""
     try:
-        doc = Document(file)
+        # Reset file pointer to beginning
+        if hasattr(file, 'seek'):
+            file.seek(0)
+            
+        # Create a bytes buffer from the uploaded file
+        docx_bytes = file.read()
+        
+        # Create a bytes buffer for python-docx
+        docx_buffer = BytesIO(docx_bytes)
+        
+        doc = Document(docx_buffer)
         text = '\n'.join([paragraph.text for paragraph in doc.paragraphs])
+        
+        # Reset file pointer for potential future use
+        if hasattr(file, 'seek'):
+            file.seek(0)
+            
         return clean_text(text)
     except Exception as e:
         raise Exception(f"Error extracting text from DOCX: {str(e)}")
@@ -30,7 +56,26 @@ def extract_text_from_docx(file):
 def extract_text_from_txt(file):
     """Extract text from TXT file"""
     try:
-        text = file.read().decode('utf-8')
+        # Reset file pointer to beginning
+        if hasattr(file, 'seek'):
+            file.seek(0)
+            
+        # Read the file content with proper encoding handling
+        try:
+            text = file.read().decode('utf-8')
+        except UnicodeDecodeError:
+            # Try other common encodings if UTF-8 fails
+            file.seek(0)
+            try:
+                text = file.read().decode('latin-1')
+            except:
+                file.seek(0)
+                text = file.read().decode('utf-8', errors='ignore')
+        
+        # Reset file pointer for potential future use
+        if hasattr(file, 'seek'):
+            file.seek(0)
+            
         return clean_text(text)
     except Exception as e:
         raise Exception(f"Error extracting text from TXT: {str(e)}")
@@ -55,6 +100,10 @@ def parse_resume(file, filename):
     """Parse resume file based on extension and return text"""
     ext = filename.split('.')[-1].lower()
     
+    # Reset file pointer to beginning before processing
+    if hasattr(file, 'seek'):
+        file.seek(0)
+    
     if ext == 'pdf':
         return extract_text_from_pdf(file)
     elif ext == 'docx':
@@ -62,4 +111,4 @@ def parse_resume(file, filename):
     elif ext == 'txt':
         return extract_text_from_txt(file)
     else:
-        raise ValueError("Unsupported file format")
+        raise ValueError("Unsupported file format. Please upload PDF, DOCX, or TXT files.")

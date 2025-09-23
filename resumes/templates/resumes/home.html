@@ -2,52 +2,69 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-8 text-center">
-        <div class="jumbotron bg-light p-5 rounded">
-            <h1 class="display-4">AI-Powered Resume Analyzer</h1>
-            <p class="lead">Upload your resume and get matched with the perfect job opportunities using advanced AI analysis.</p>
-            <hr class="my-4">
-            <p>Our system analyzes your skills and experience to recommend the best job matches from our database.</p>
-            
-            {% if user.is_authenticated %}
-            <a class="btn btn-primary btn-lg" href="{% url 'resume_upload' %}" role="button">Upload Resume</a>
-            <a class="btn btn-outline-primary btn-lg" href="{% url 'resume_list' %}" role="button">View My Resumes</a>
-            {% else %}
-            <p>Get started by creating an account or logging in.</p>
-            <a class="btn btn-primary btn-lg me-2" href="{% url 'signup' %}" role="button">Sign Up</a>
-            <a class="btn btn-outline-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
-            {% endif %}
+    <div class="col-lg-10">
+        <!-- Hero Section -->
+        <div class="jumbotron text-center fade-in">
+            <h1 class="display-4 mb-4">AI-Powered Resume Analyzer</h1>
+            <p class="lead mb-4">Upload your resume and get matched with the perfect job opportunities using advanced AI analysis.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                {% if user.is_authenticated %}
+                <a href="{% url 'resume_upload' %}" class="btn btn-primary btn-lg px-4 py-3">
+                    <i class="fas fa-cloud-upload-alt me-2"></i>Upload Resume
+                </a>
+                <a href="{% url 'resume_list' %}" class="btn btn-outline-primary btn-lg px-4 py-3">
+                    <i class="fas fa-file-alt me-2"></i>View My Resumes
+                </a>
+                {% else %}
+                <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-4 py-3">
+                    <i class="fas fa-user-plus me-2"></i>Get Started Free
+                </a>
+                <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-4 py-3">
+                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </a>
+                {% endif %}
+            </div>
         </div>
         
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Resume Parsing</h5>
-                        <p class="card-text">Upload your resume in PDF, DOCX, or TXT format. Our system extracts and analyzes the content.</p>
+        <!-- Features Section -->
+        <div class="row mt-6">
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4 class="card-title">Resume Parsing</h4>
+                        <p class="card-text">Upload your resume in PDF, DOCX, or TXT format. Our system extracts and analyzes the content with advanced AI.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-brain fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">AI Analysis</h5>
-                        <p class="card-text">We use advanced NLP and machine learning to identify your skills and experience.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="card-title">AI Analysis</h4>
+                        <p class="card-text">We use advanced NLP and machine learning to identify your skills, experience, and career potential.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-briefcase fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Job Matching</h5>
-                        <p class="card-text">Get personalized job recommendations based on your profile and our job database.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4 class="card-title">Job Matching</h4>
+                        <p class="card-text">Get personalized job recommendations based on your profile and our extensive job database.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        
+        <!-- Stats Section 
+        <div class="row mt-6 text-center">
+            <div class="col-md-3 col-6 mb-4">
+                <h3 class="text-primary display-5 fw-bold">10,000-->
 {% endblock %}

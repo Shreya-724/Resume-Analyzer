@@ -1,72 +1,366 @@
 [
     {
-        "title": "Python Developer",
-        "company": "Tech Solutions Inc.",
-        "description": "We are looking for a Python Developer with experience in Django and Flask frameworks. The ideal candidate will have strong problem-solving skills and experience with REST APIs and database design.",
-        "required_skills": ["Python", "Django", "Flask", "REST APIs", "SQL", "Problem Solving"],
-        "location": "New York, NY"
+        "title": "Software Engineer",
+        "company": "Tech Solutions Nepal",
+        "description": "We are looking for a skilled Software Engineer with experience in Python and Django. The ideal candidate will develop and maintain web applications for our clients in Kathmandu.",
+        "required_skills": ["Python", "Django", "JavaScript", "SQL", "REST APIs"],
+        "location": "Kathmandu"
     },
     {
         "title": "Frontend Developer",
-        "company": "Web Innovations LLC",
-        "description": "Join our team as a Frontend Developer specializing in React and modern JavaScript. You'll be responsible for building responsive user interfaces and collaborating with our design team.",
+        "company": "Web Innovations Nepal",
+        "description": "Join our team as a Frontend Developer specializing in React and modern JavaScript frameworks. You'll work on exciting projects for Nepali and international clients.",
         "required_skills": ["JavaScript", "React", "HTML", "CSS", "UI/UX"],
-        "location": "San Francisco, CA"
+        "location": "Lalitpur"
     },
     {
-        "title": "Data Scientist",
-        "company": "Data Insights Corp",
-        "description": "Seeking a Data Scientist with experience in machine learning and statistical analysis. You'll work with large datasets to extract insights and build predictive models.",
-        "required_skills": ["Python", "Machine Learning", "Statistics", "Pandas", "NumPy", "Data Visualization"],
-        "location": "Boston, MA"
+        "title": "Data Analyst",
+        "company": "Data Insights Nepal",
+        "description": "Seeking a Data Analyst to work with financial data from Nepali markets. Experience with data visualization and statistical analysis required.",
+        "required_skills": ["Python", "Excel", "SQL", "Data Analysis", "Statistics"],
+        "location": "Kathmandu"
     },
     {
-        "title": "DevOps Engineer",
-        "company": "Cloud Systems Ltd",
-        "description": "We need a DevOps Engineer to automate our deployment processes and manage our cloud infrastructure. Experience with Docker, Kubernetes, and AWS required.",
-        "required_skills": ["DevOps", "Docker", "Kubernetes", "AWS", "CI/CD", "Linux"],
-        "location": "Austin, TX"
+        "title": "IT Support Specialist",
+        "company": "Nepal Telecom",
+        "description": "Provide technical support and maintain IT infrastructure for Nepal's leading telecommunications company.",
+        "required_skills": ["Networking", "Hardware", "Troubleshooting", "Windows", "Linux"],
+        "location": "Kathmandu"
     },
     {
-        "title": "Full Stack Developer",
-        "company": "Digital Creations Inc",
-        "description": "Looking for a Full Stack Developer proficient in both frontend and backend technologies. You'll work on all aspects of our web application from database to UI.",
-        "required_skills": ["JavaScript", "React", "Node.js", "SQL", "HTML", "CSS"],
-        "location": "Chicago, IL"
-    },
-    {
-        "title": "Machine Learning Engineer",
-        "company": "AI Innovations",
-        "description": "Join our AI team to develop and deploy machine learning models. Experience with deep learning frameworks and cloud deployment is essential.",
-        "required_skills": ["Python", "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch", "AWS"],
-        "location": "Seattle, WA"
+        "title": "Digital Marketing Manager",
+        "company": "Himalayan Digital Agency",
+        "description": "Manage digital marketing campaigns for Nepali businesses. Experience with SEO, social media, and Google Ads required.",
+        "required_skills": ["SEO", "Social Media", "Google Ads", "Content Marketing", "Analytics"],
+        "location": "Pokhara"
     },
     {
         "title": "Mobile App Developer",
-        "company": "AppWorks Studio",
-        "description": "We're hiring a Mobile App Developer to build cross-platform applications. Experience with React Native or Flutter is preferred.",
-        "required_skills": ["JavaScript", "React Native", "Flutter", "iOS", "Android", "Mobile Development"],
-        "location": "Los Angeles, CA"
+        "company": "AppWorks Nepal",
+        "description": "Develop mobile applications for Android and iOS platforms. Experience with Flutter or React Native preferred.",
+        "required_skills": ["Flutter", "Dart", "React Native", "Mobile Development", "REST APIs"],
+        "location": "Kathmandu"
     },
     {
-        "title": "Backend Engineer",
-        "company": "Server Solutions Inc",
-        "description": "Looking for a Backend Engineer to design and implement scalable server architectures. Experience with microservices and database optimization required.",
-        "required_skills": ["Python", "Java", "Microservices", "SQL", "NoSQL", "API Design"],
-        "location": "Remote"
+        "title": "Network Administrator",
+        "company": "Nepal Bank Limited",
+        "description": "Manage and maintain banking network infrastructure across branches in Nepal.",
+        "required_skills": ["Cisco", "Networking", "Security", "Firewall", "VPN"],
+        "location": "Kathmandu"
     },
     {
         "title": "UX/UI Designer",
-        "company": "Creative Designs Co",
-        "description": "Join our design team to create intuitive user experiences and beautiful interfaces. Proficiency in design tools and understanding of frontend technologies required.",
-        "required_skills": ["UI/UX", "Figma", "Adobe XD", "HTML", "CSS", "Web Design"],
-        "location": "Portland, OR"
+        "company": "Creative Designs Nepal",
+        "description": "Create beautiful and functional user interfaces for web and mobile applications serving the Nepali market.",
+        "required_skills": ["Figma", "Adobe XD", "UI/UX", "Wireframing", "Prototyping"],
+        "location": "Lalitpur"
     },
     {
-        "title": "Data Engineer",
-        "company": "Big Data Technologies",
-        "description": "Seeking a Data Engineer to build and maintain our data pipelines. Experience with Spark, Hadoop, and cloud data services required.",
-        "required_skills": ["Python", "SQL", "Spark", "Hadoop", "AWS", "Data Pipelines"],
-        "location": "Denver, CO"
+        "title": "Python Developer",
+        "company": "Kathmandu Tech Hub",
+        "description": "Backend developer position focusing on Python and Django development for e-commerce platforms.",
+        "required_skills": ["Python", "Django", "PostgreSQL", "Redis", "Docker"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "DevOps Engineer",
+        "company": "Cloud Solutions Nepal",
+        "description": "Implement and maintain CI/CD pipelines and cloud infrastructure for Nepali startups.",
+        "required_skills": ["AWS", "Docker", "Kubernetes", "Jenkins", "Linux"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Database Administrator",
+        "company": "Nepal Government Portal",
+        "description": "Manage government database systems and ensure data security and integrity.",
+        "required_skills": ["MySQL", "PostgreSQL", "Database Security", "Backup", "Recovery"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Java Developer",
+        "company": "Fintech Nepal",
+        "description": "Develop financial technology solutions for the Nepali banking sector using Java Spring Boot.",
+        "required_skills": ["Java", "Spring Boot", "Microservices", "Hibernate", "REST APIs"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Content Writer",
+        "company": "Nepal Times Media",
+        "description": "Create engaging content about technology and business for Nepali audience.",
+        "required_skills": ["Content Writing", "SEO", "Research", "English", "Nepali"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Cybersecurity Analyst",
+        "company": "Nepal Police Cyber Bureau",
+        "description": "Protect critical infrastructure from cyber threats and investigate cyber crimes.",
+        "required_skills": ["Cybersecurity", "Network Security", "Forensics", "Ethical Hacking", "Incident Response"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Project Manager",
+        "company": "IT Project Solutions Nepal",
+        "description": "Manage software development projects for clients in Nepal and abroad.",
+        "required_skills": ["Project Management", "Agile", "Scrum", "JIRA", "Team Leadership"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "PHP Developer",
+        "company": "Web Development Nepal",
+        "description": "Develop and maintain WordPress and custom PHP applications for local businesses.",
+        "required_skills": ["PHP", "WordPress", "MySQL", "JavaScript", "Laravel"],
+        "location": "Biratnagar"
+    },
+    {
+        "title": "AI/ML Engineer",
+        "company": "Nepal AI Research Center",
+        "description": "Work on artificial intelligence and machine learning projects relevant to Nepali context.",
+        "required_skills": ["Python", "Machine Learning", "TensorFlow", "Data Science", "Deep Learning"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "System Administrator",
+        "company": "Nepal Airlines",
+        "description": "Maintain IT systems and infrastructure for Nepal's national airline.",
+        "required_skills": ["Windows Server", "Linux", "Active Directory", "Virtualization", "Backup"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "QA Tester",
+        "company": "Quality Assurance Nepal",
+        "description": "Ensure software quality through manual and automated testing for Nepali software products.",
+        "required_skills": ["Manual Testing", "Automation", "Selenium", "JIRA", "Test Cases"],
+        "location": "Lalitpur"
+    },
+    {
+        "title": "Business Analyst",
+        "company": "Nepal Business Solutions",
+        "description": "Analyze business requirements and translate them into technical specifications for software projects.",
+        "required_skills": ["Business Analysis", "Requirements Gathering", "Documentation", "UML", "SQL"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Full Stack Developer",
+        "company": "Himalayan Tech Solutions",
+        "description": "Work on both frontend and backend development for web applications serving Nepali market.",
+        "required_skills": ["JavaScript", "Node.js", "React", "MongoDB", "Express.js"],
+        "location": "Pokhara"
+    },
+    {
+        "title": "Cloud Engineer",
+        "company": "Nepal Cloud Services",
+        "description": "Design and implement cloud infrastructure solutions for businesses in Nepal.",
+        "required_skills": ["AWS", "Azure", "Cloud Architecture", "Terraform", "DevOps"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Trainer",
+        "company": "Nepal Computer Institute",
+        "description": "Train students in programming, web development, and IT skills at leading computer institute.",
+        "required_skills": ["Teaching", "Programming", "Communication", "Python", "Web Development"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "ERP Consultant",
+        "company": "Business Management Nepal",
+        "description": "Implement and customize ERP solutions for Nepali manufacturing and service industries.",
+        "required_skills": ["ERP", "Business Process", "Consulting", "SAP", "Oracle"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "React Native Developer",
+        "company": "Mobile First Nepal",
+        "description": "Develop cross-platform mobile applications using React Native for Nepali startups.",
+        "required_skills": ["React Native", "JavaScript", "Mobile Development", "Redux", "REST APIs"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Data Scientist",
+        "company": "Nepal Data Analytics",
+        "description": "Analyze large datasets and build predictive models for Nepali business intelligence.",
+        "required_skills": ["Python", "R", "Machine Learning", "Statistics", "Data Visualization"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Technical Support Engineer",
+        "company": "Vianet Communications",
+        "description": "Provide technical support for internet and networking services across Nepal.",
+        "required_skills": ["Customer Support", "Networking", "Troubleshooting", "Communication", "Technical Knowledge"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "WordPress Developer",
+        "company": "Nepal Web Studio",
+        "description": "Create and customize WordPress websites for Nepali businesses and organizations.",
+        "required_skills": ["WordPress", "PHP", "CSS", "JavaScript", "Theme Development"],
+        "location": "Bhaktapur"
+    },
+    {
+        "title": "iOS Developer",
+        "company": "Apple Solutions Nepal",
+        "description": "Develop native iOS applications for the growing Nepali mobile market.",
+        "required_skills": ["Swift", "iOS", "Xcode", "UIKit", "REST APIs"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Android Developer",
+        "company": "Mobile Tech Nepal",
+        "description": "Create Android applications for local businesses and startups in Nepal.",
+        "required_skills": ["Java", "Kotlin", "Android Studio", "Firebase", "Material Design"],
+        "location": "Lalitpur"
+    },
+    {
+        "title": "SEO Specialist",
+        "company": "Digital Marketing Nepal",
+        "description": "Optimize websites for search engines and improve online visibility for Nepali businesses.",
+        "required_skills": ["SEO", "Google Analytics", "Keyword Research", "Content Strategy", "Link Building"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Game Developer",
+        "company": "Nepal Game Studio",
+        "description": "Develop mobile games with themes relevant to Nepali culture and mythology.",
+        "required_skills": ["Unity", "C#", "Game Development", "3D Modeling", "Animation"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Sales Executive",
+        "company": "Tech Products Nepal",
+        "description": "Sell software solutions and IT services to businesses across Nepal.",
+        "required_skills": ["Sales", "Communication", "IT Products", "Negotiation", "Customer Relationship"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Blockchain Developer",
+        "company": "Nepal Blockchain Solutions",
+        "description": "Work on blockchain projects and cryptocurrency applications for Nepali market.",
+        "required_skills": ["Blockchain", "Solidity", "Smart Contracts", "Ethereum", "Cryptocurrency"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "System Analyst",
+        "company": "Nepal Government IT Department",
+        "description": "Analyze and improve government IT systems and digital services.",
+        "required_skills": ["System Analysis", "Documentation", "UML", "Requirements", "Technical Writing"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Manager",
+        "company": "Hotel Yak & Yeti",
+        "description": "Manage IT operations for one of Nepal's premier hospitality establishments.",
+        "required_skills": ["IT Management", "Team Leadership", "Budgeting", "Strategic Planning", "Vendor Management"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Web Designer",
+        "company": "Creative Web Nepal",
+        "description": "Design visually appealing websites for Nepali tourism and business sectors.",
+        "required_skills": ["Web Design", "Photoshop", "Illustrator", "HTML", "CSS"],
+        "location": "Pokhara"
+    },
+    {
+        "title": "Database Developer",
+        "company": "Nepal Statistics Bureau",
+        "description": "Develop and optimize databases for national statistics and census data.",
+        "required_skills": ["SQL", "Database Design", "Optimization", "ETL", "Data Warehousing"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Auditor",
+        "company": "Audit Firm Nepal",
+        "description": "Conduct IT audits and ensure compliance for Nepali businesses.",
+        "required_skills": ["IT Audit", "Compliance", "Risk Assessment", "SOX", "Internal Controls"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Python Django Developer",
+        "company": "Kathmandu Software House",
+        "description": "Develop web applications using Python Django framework for various clients.",
+        "required_skills": ["Python", "Django", "Django REST Framework", "PostgreSQL", "Celery"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Network Security Engineer",
+        "company": "Nepal Army Cyber Unit",
+        "description": "Protect military networks and ensure national cybersecurity.",
+        "required_skills": ["Network Security", "Firewalls", "IDS/IPS", "Penetration Testing", "Security Protocols"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "E-commerce Developer",
+        "company": "Daraz Nepal",
+        "description": "Develop and maintain Nepal's leading e-commerce platform.",
+        "required_skills": ["E-commerce", "Magento", "Payment Gateway", "Security", "Performance Optimization"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Consultant",
+        "company": "Consulting Nepal",
+        "description": "Provide IT consulting services to Nepali businesses for digital transformation.",
+        "required_skills": ["Consulting", "IT Strategy", "Digital Transformation", "Business Analysis", "Presentation"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "SharePoint Developer",
+        "company": "Nepal Corporate Solutions",
+        "description": "Develop SharePoint solutions for corporate clients in Nepal.",
+        "required_skills": ["SharePoint", "Office 365", "PowerShell", "C#", "Workflow"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "UI Developer",
+        "company": "User Interface Nepal",
+        "description": "Create responsive and interactive user interfaces for web applications.",
+        "required_skills": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive Design"],
+        "location": "Lalitpur"
+    },
+    {
+        "title": "IT Recruiter",
+        "company": "Jobs Nepal",
+        "description": "Recruit IT professionals for companies across Nepal.",
+        "required_skills": ["Recruitment", "IT Hiring", "Interviewing", "Sourcing", "Communication"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Power BI Developer",
+        "company": "Nepal Analytics Solutions",
+        "description": "Create business intelligence dashboards and reports for Nepali enterprises.",
+        "required_skills": ["Power BI", "Data Visualization", "DAX", "SQL", "Business Intelligence"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Flutter Developer",
+        "company": "CrossPlatform Nepal",
+        "description": "Develop cross-platform mobile applications using Flutter framework.",
+        "required_skills": ["Flutter", "Dart", "Mobile Development", "Firebase", "REST APIs"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Infrastructure Manager",
+        "company": "Nepal Hydroelectricity",
+        "description": "Manage IT infrastructure for hydroelectric power projects across Nepal.",
+        "required_skills": ["Infrastructure", "Networking", "Servers", "Virtualization", "Project Management"],
+        "location": "Butwal"
+    },
+    {
+        "title": "Technical Writer",
+        "company": "Nepal Documentation Services",
+        "description": "Create technical documentation for software products developed in Nepal.",
+        "required_skills": ["Technical Writing", "Documentation", "English", "Software", "Communication"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "Ruby on Rails Developer",
+        "company": "Ruby Nepal",
+        "description": "Develop web applications using Ruby on Rails framework for startup ecosystem.",
+        "required_skills": ["Ruby", "Ruby on Rails", "PostgreSQL", "RSpec", "REST APIs"],
+        "location": "Kathmandu"
+    },
+    {
+        "title": "IT Security Consultant",
+        "company": "Secure Nepal",
+        "description": "Provide cybersecurity consulting services to protect Nepali businesses from threats.",
+        "required_skills": ["Cybersecurity", "Risk Assessment", "Security Audit", "Compliance", "Consulting"],
+        "location": "Kathmandu"
     }
 ]

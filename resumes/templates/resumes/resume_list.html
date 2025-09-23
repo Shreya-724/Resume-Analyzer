@@ -2,52 +2,71 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>My Resumes</h2>
+    <div>
+        <h2 class="mb-1"><i class="fas fa-file-alt me-2"></i>My Resumes</h2>
+        <p class="text-muted">Manage and analyze your uploaded resumes</p>
+    </div>
     <a href="{% url 'resume_upload' %}" class="btn btn-primary">
-        <i class="fas fa-upload me-1"></i> Upload Resume
+        <i class="fas fa-plus me-1"></i> Upload New
     </a>
 </div>
 
 {% if page_obj %}
-<div class="list-group">
+<div class="row">
     {% for resume in page_obj %}
-    <div class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ resume.original_filename }}</h5>
-            <small>{{ resume.uploaded_at|date:"M d, Y" }}</small>
-        </div>
-        <p class="mb-1">Extracted text: {{ resume.extracted_text|truncatewords:30 }}</p>
-        
-        {% if resume.skills %}
-        <div class="mt-2">
-            <strong>Skills detected:</strong>
-            {% for skill in resume.skills|slice:":10" %}
-            <span class="badge bg-secondary skill-badge">{{ skill }}</span>
-            {% endfor %}
-            {% if resume.skills|length > 10 %}
-            <span class="badge bg-light text-dark">+{{ resume.skills|length|add:"-10" }} more</span>
-            {% endif %}
-        </div>
-        {% endif %}
-        
-        <div class="mt-3">
-            <a href="{% url 'resume_detail' resume.pk %}" class="btn btn-sm btn-outline-primary">
-                <i class="fas fa-eye me-1"></i> View Details & Recommendations
-            </a>
+    <div class="col-lg-6 col-xl-4 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h5 class="card-title text-truncate">{{ resume.original_filename }}</h5>
+                    <span class="badge bg-light text-dark">{{ resume.uploaded_at|date:"M d, Y" }}</span>
+                </div>
+                
+                <p class="card-text text-muted small mb-3">
+                    {{ resume.extracted_text|truncatewords:20 }}
+                </p>
+                
+                {% if resume.skills %}
+                <div class="mb-3">
+                    <h6 class="text-sm mb-2"><i class="fas fa-tools me-1"></i>Detected Skills:</h6>
+                    <div class="d-flex flex-wrap">
+                        {% for skill in resume.skills|slice:":5" %}
+                        <span class="badge skill-badge mb-1 me-1">{{ skill }}</span>
+                        {% endfor %}
+                        {% if resume.skills|length > 5 %}
+                        <span class="badge bg-light text-dark mb-1">+{{ resume.skills|length|add:"-5" }} more</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="d-flex gap-2">
+                    <a href="{% url 'resume_detail' resume.pk %}" class="btn btn-outline-primary flex-fill">
+                        <i class="fas fa-chart-line me-1"></i> View Analysis
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ resume.id }}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     {% endfor %}
 </div>
 
 <!-- Pagination -->
-<nav class="mt-4">
+<nav aria-label="Resume pagination" class="mt-5">
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
         <li class="page-item">
-            <a class="page-link" href="?page=1">&laquo; First</a>
+            <a class="page-link" href="?page=1">
+                <i class="fas fa-angle-double-left"></i>
+            </a>
         </li>
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                <i class="fas fa-angle-left"></i>
+            </a>
         </li>
         {% endif %}
         
@@ -57,22 +76,121 @@
         
         {% if page_obj.has_next %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                <i class="fas fa-angle-right"></i>
+            </a>
         </li>
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                <i class="fas fa-angle-double-right"></i>
+            </a>
         </li>
         {% endif %}
     </ul>
 </nav>
 
 {% else %}
-<div class="alert alert-info text-center">
-    <h4 class="alert-heading">No resumes uploaded yet</h4>
-    <p>Upload your first resume to get started with job recommendations.</p>
-    <a href="{% url 'resume_upload' %}" class="btn btn-primary">Upload Resume</a>
+<div class="text-center py-5">
+    <div class="card shadow">
+        <div class="card-body py-5">
+            <i class="fas fa-file-upload fa-4x text-muted mb-4"></i>
+            <h3 class="text-muted">No Resumes Yet</h3>
+            <p class="text-muted mb-4">Upload your first resume to get started with job recommendations</p>
+            <a href="{% url 'resume_upload' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-cloud-upload-alt me-2"></i>Upload Your First Resume
+            </a>
+        </div>
+    </div>
 </div>
-
 {% endif %}
-<br><br><br><br><br><br><br><br>
+
+<!-- Delete Confirmation Modals -->
+{% for resume in page_obj %}
+<div class="modal fade" id="deleteModal{{ resume.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ resume.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel{{ resume.id }}">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>Confirm Delete
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong>"{{ resume.original_filename }}"</strong>?</p>
+                <p class="text-muted small">This action cannot be undone. All analysis data and job recommendations for this resume will be permanently removed.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="{% url 'resume_delete' resume.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash-alt me-1"></i> Delete Resume
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<style>
+.btn-outline-danger {
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card .card-body > .d-flex:last-child {
+    margin-top: auto;
+}
+
+/* Delete modal styling */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    color: var(--dark);
+    border-bottom: 1px solid #dee2e6;
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add animation to cards
+    const jobCards = document.querySelectorAll('.feature-card');
+    jobCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('animate__animated', 'animate__fadeInUp');
+    });
+    
+    // Add animation to skill badges
+    const skillBadges = document.querySelectorAll('.skill-badge');
+    skillBadges.forEach((badge, index) => {
+        badge.style.animationDelay = `${index * 0.05}s`;
+        badge.classList.add('animate__animated', 'animate__fadeIn');
+    });
+    
+    // Initialize modals
+    var deleteModals = document.querySelectorAll('.modal');
+    deleteModals.forEach(function(modal) {
+        modal.addEventListener('shown.bs.modal', function () {
+            var closeButton = this.querySelector('.btn-close');
+            if (closeButton) {
+                closeButton.focus();
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

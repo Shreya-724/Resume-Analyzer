@@ -1,5 +1,7 @@
 from django import forms
 from .models import Resume
+from .models import UserProfile
+from django.contrib.auth.models import User
 
 class ResumeUploadForm(forms.ModelForm):
     class Meta:
@@ -19,3 +21,15 @@ class ResumeUploadForm(forms.ModelForm):
                 raise forms.ValidationError("Invalid file type. Only PDF, DOCX, and TXT files are allowed.")
                 
         return file
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_picture', 'phone_number', 'bio', 'location', 'website', 'linkedin_profile', 'github_profile']
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4}),
+        }
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
