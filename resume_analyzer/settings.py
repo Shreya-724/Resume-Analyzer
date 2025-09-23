@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-(nyu7-&xy0=i3lnjp06@pd*sq26=7q*di&q+s-!$09=3r4y@1(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Debug settings
-DEBUG = False
-ALLOWED_HOSTS = ['saikik.pythonanywhere.com', 'localhost', '127.0.0.1']
+DEBUG = True
+#ALLOWED_HOSTS = ['saikik.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -54,13 +54,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 # Static files storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Security settings for production
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
+#SECURE_BROWSER_XSS_FILTER = True
+#SECURE_CONTENT_TYPE_NOSNIFF = True
+#X_FRAME_OPTIONS = 'DENY'
 
 
 ROOT_URLCONF = 'resume_analyzer.urls'
