@@ -183,6 +183,5 @@ ENV/
 # Database (except for the structure if you want to include empty DB)
 !*.sqlite3.empty  # If you want to include an empty database structure
 
-# Sample files (you might want to keep these)
-sample_jobs.json
-skills.csv
+# Railway specific #
+railway.json
