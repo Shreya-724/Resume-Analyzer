@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: resume-analyzer
+    env: python
+    plan: free
+    buildCommand: |
+        pip install -r requirements.txt
+        python manage.py collectstatic --noinput
+    startCommand: gunicorn resume_analyzer.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
