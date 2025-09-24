@@ -122,7 +122,7 @@ def resume_delete(request, pk):
 
 @login_required
 def profile_view(request):
-    """User profile page"""
+    """User profile page with error handling for file uploads"""
     user = request.user
     try:
         profile = user.userprofile
@@ -134,10 +134,28 @@ def profile_view(request):
         profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
         
         if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your profile has been updated successfully!')
-            return redirect('profile')
+            try:
+                user_form.save()
+                
+                # Handle file upload with error catching
+                if 'profile_picture' in request.FILES:
+                    try:
+                        profile_form.save()
+                    except Exception as e:
+                        # File upload failed, but save other data
+                        profile_form.instance.profile_picture = None
+                        profile_form.save()
+                        messages.warning(request, 'Profile picture upload failed, but other changes were saved.')
+                    else:
+                        messages.success(request, 'Your profile has been updated successfully!')
+                else:
+                    profile_form.save()
+                    messages.success(request, 'Your profile has been updated successfully!')
+                    
+                return redirect('profile')
+                
+            except Exception as e:
+                messages.error(request, f'Error saving profile: {str(e)}')
     else:
         user_form = UserForm(instance=user)
         profile_form = UserProfileForm(instance=profile)

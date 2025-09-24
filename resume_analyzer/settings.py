@@ -145,6 +145,12 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+    # For production, use a more conservative approach
+    MAX_UPLOAD_SIZE = 2 * 1024 * 1024  # 2MB instead of 5MB
+    
+    # Add file upload error handling
+    DATA_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 2MB
+    FILE_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 2MB
     
     
     
