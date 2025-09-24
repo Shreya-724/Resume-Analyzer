@@ -1,25 +1,33 @@
 import re
-import pandas as pd
 import os
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import csv
 from django.conf import settings
 
 def load_skills_list():
-    """Load skills from CSV file"""
+    """Load skills from CSV file without pandas or scikit-learn"""
     skills_path = os.path.join(settings.BASE_DIR, 'skills.csv')
+    skills_set = set()
+    
     try:
-        skills_df = pd.read_csv(skills_path)
-        return set(skills_df['skill'].str.lower().tolist())
+        with open(skills_path, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if 'skill' in row:
+                    skills_set.add(row['skill'].lower())
     except FileNotFoundError:
-        return {
+        # Return basic skills if file not found
+        skills_set = {
             'python', 'javascript', 'java', 'html', 'css', 'sql', 
             'django', 'flask', 'react', 'node.js', 'machine learning',
-            'data analysis', 'project management', 'communication'
+            'data analysis', 'project management', 'communication',
+            'c++', 'aws', 'docker', 'git', 'linux', 'mysql', 'postgresql',
+            'api', 'rest', 'agile', 'scrum', 'teamwork', 'problem solving'
         }
+    
+    return skills_set
 
 def extract_skills(text):
-    """Simple skill extraction without spaCy"""
+    """Simple skill extraction"""
     text = text.lower()
     skills_list = load_skills_list()
     found_skills = []
@@ -31,30 +39,37 @@ def extract_skills(text):
     
     return found_skills
 
-def get_similarity(resume_text, job_descriptions):
-    """Simple TF-IDF similarity"""
-    if not job_descriptions:
-        return []
+def calculate_similarity_simple(resume_text, job_description):
+    """Ultra-simple similarity using word overlap (Jaccard similarity)"""
+    if not resume_text or not job_description:
+        return 0.0
     
-    vectorizer = TfidfVectorizer(stop_words='english', max_features=500)
-    all_texts = [resume_text] + job_descriptions
-    tfidf_matrix = vectorizer.fit_transform(all_texts)
+    # Convert to sets of words
+    resume_words = set(re.findall(r'\b\w+\b', resume_text.lower()))
+    job_words = set(re.findall(r'\b\w+\b', job_description.lower()))
     
-    resume_vector = tfidf_matrix[0:1]
-    job_vectors = tfidf_matrix[1:]
+    # Calculate Jaccard similarity
+    if not resume_words or not job_words:
+        return 0.0
     
-    similarities = cosine_similarity(resume_vector, job_vectors)
-    return similarities[0]
+    intersection = resume_words.intersection(job_words)
+    union = resume_words.union(job_words)
+    
+    return len(intersection) / len(union)
 
 def get_top_recommendations(resume_text, jobs, top_n=5):
-    """Get top job recommendations"""
-    job_descriptions = [job.description for job in jobs]
-    
-    if not job_descriptions:
+    """Get top job recommendations using simple word overlap"""
+    if not jobs:
         return []
     
-    similarities = get_similarity(resume_text, job_descriptions)
-    job_scores = list(zip(jobs, similarities))
+    # Calculate similarities using simple word overlap
+    job_scores = []
+    for job in jobs:
+        similarity = calculate_similarity_simple(resume_text, job.description)
+        job_scores.append((job, similarity))
+    
+    # Sort by similarity (descending)
     job_scores.sort(key=lambda x: x[1], reverse=True)
     
+    # Return top N recommendations
     return job_scores[:top_n]

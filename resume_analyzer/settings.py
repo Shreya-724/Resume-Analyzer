@@ -147,4 +147,4 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     
     
-    'django-insecure-(nyu7-&xy0=i3lnjp06@pd*sq26=7q*di&q+s-!$09=3r4y@1('
+    

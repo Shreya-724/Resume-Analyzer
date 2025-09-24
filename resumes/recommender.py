@@ -3,7 +3,6 @@ from .nlp import get_top_recommendations
 
 def recommend_jobs_for_resume(resume_text, top_n=5):
     """Get job recommendations for a resume"""
-    # Get all jobs from database
     jobs = Job.objects.all()
     
     if not jobs:

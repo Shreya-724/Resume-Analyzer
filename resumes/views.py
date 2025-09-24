@@ -15,7 +15,9 @@ from .parsers import parse_resume
 from .nlp import extract_skills
 from .recommender import recommend_jobs_for_resume_id
 from django.contrib import messages
-
+# In resumes/views.py, ensure you're importing from nlp
+from .nlp import extract_skills
+from .recommender import recommend_jobs_for_resume_id
 
 def home(request):
     """Home page view"""
